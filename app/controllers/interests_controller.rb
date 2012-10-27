@@ -21,6 +21,6 @@ class InterestsController < ApplicationController
 
     def correct_user
       @interest = current_user.interests.find_by_id(params[:id])
-      redirect_to root_url if @micropost.nil?
+      redirect_to root_url if @interest.nil?
     end
 end
