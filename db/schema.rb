@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121002074335) do
+ActiveRecord::Schema.define(:version => 20121010044100) do
+
+  create_table "interests", :force => true do |t|
+    t.string   "name"
+    t.string   "status"
+    t.string   "notes"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "interests", ["user_id", "created_at"], :name => "index_interests_on_user_id_and_created_at"
 
   create_table "users", :force => true do |t|
     t.string   "name"

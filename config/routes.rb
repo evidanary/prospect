@@ -1,6 +1,7 @@
 Prospect::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :interests, only: [:create, :destroy]
   root :to => "home#index"
   match "/contact", to: "home#contact"
   match "/signup", to: "users#new"

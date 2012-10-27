@@ -1,0 +1,9 @@
+<%= form_for(@interest) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.text_field :name, placeholder: "Name..." %>
+    <%= f.text_field :status, placeholder: "Status..." %>
+    <%= f.text_field :notes, placeholder: "Notes..." %>
+  </div>
+  <%= f.submit "Add Interest", class: "btn btn-large btn-primary" %>
+<% end %>

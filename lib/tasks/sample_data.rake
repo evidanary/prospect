@@ -13,5 +13,12 @@ namespace :db do
                    email: email,
                    password: password)
     end
+    users = User.all(limit: 6)
+    5.times do
+      name = Faker::Name.first_name
+      status = Faker::Lorem.sentence(5)
+      notes = Faker::Lorem.paragraph(3)
+      users.each { |user| user.interests.create!(name: name, status: status, notes: notes) }
+    end
   end
 end
