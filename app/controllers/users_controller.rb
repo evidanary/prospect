@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]
-  before_filter :correct_user,   only: [:edit, :update]
+  before_filter :correct_user,   only: [:show, :edit, :update, :destroy]
   before_filter :admin_user,     only: :destroy
   
   def new
@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+
     @interests = @user.interests.paginate(page: params[:page])
   end
   
@@ -16,7 +17,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       sign_in @user
-      flash[:success] = "Welcome to the Sample App!"
+      flash[:success] = "Welcome to Prospect!"
       redirect_to @user
     else
       render 'new'
@@ -37,9 +38,9 @@ class UsersController < ApplicationController
     end
   end
   
-  def index
-    @users = User.paginate(page: params[:page])
-  end
+#  def index
+#    @users = User.paginate(page: params[:page])
+#  end
   
   def destroy
     User.find(params[:id]).destroy

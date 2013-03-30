@@ -1,3 +1,4 @@
+<% if current_user?(interest.user) %>
 <tr>
   <td><%= "#{interest.name}" %></td>
   <td><%= "#{interest.status}" %></td>
@@ -6,10 +7,9 @@
     Posted <%= time_ago_in_words(interest.created_at) %> ago.</span>
   </td>
   <td>
-    <% if current_user?(interest.user) %>
     <%= link_to "delete", interest, method: :delete,
                                      data: { confirm: "You sure?" },
                                      title: interest.name %>
-    <% end %>
   </td>
 </tr>
+<% end %>
